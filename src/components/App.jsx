@@ -1,17 +1,32 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Ducks from "./Ducks";
 import Login from "./Login";
 import MyProfile from "./MyProfile";
 import Register from "./Register";
 import "./styles/App.css";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <Routes>
-      <Route path="/ducks" element={<Ducks />} />
-      <Route path="/my-profile" element={<MyProfile />} />
+      <Route
+        path="/ducks"
+        element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <Ducks />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/my-profile"
+        element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <MyProfile />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/login"
         element={
