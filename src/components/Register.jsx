@@ -19,8 +19,8 @@ const Register = ({ handleRegistration }) => {
     }));
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     handleRegistration(data);
   };
 
