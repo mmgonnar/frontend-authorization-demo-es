@@ -52,7 +52,6 @@ function App() {
           setToken(data.jwt);
           setUserData(data.user);
           setIsLoggedIn(true);
-
           const redirectPath = location.state?.from?.pathname || "/ducks";
           navigate(redirectPath);
         }
@@ -66,6 +65,7 @@ function App() {
     if (!jwt) {
       return;
     }
+
     api
       .getUserInfo(jwt)
       .then(({ username, email }) => {
